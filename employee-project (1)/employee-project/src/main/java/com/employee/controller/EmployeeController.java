@@ -3,6 +3,7 @@ package com.employee.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,6 +24,7 @@ import com.employee.service.EmployeeService;
 @RequestMapping("/employee")
 public class EmployeeController {
 
+	@Qualifier(value = "service2")
 	@Autowired
 	EmployeeService employeeService;
 

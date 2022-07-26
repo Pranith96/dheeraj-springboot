@@ -6,6 +6,8 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.employee.dto.EmployeeDto;
@@ -14,8 +16,10 @@ import com.employee.entity.Status;
 import com.employee.exceptions.EmployeeNotFoundException;
 import com.employee.repository.EmployeeRepository;
 
+//@Primary
 @Transactional
-@Service
+@Service(value = "service1")
+@Profile(value = { "dev", "local", "qa", "prod" })
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
@@ -92,7 +96,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeRepository.delete(response.get());
 		return "Deleted successfully";
 	}
-	
+
 //	@Override
 //	public String deleteEmployee(Integer employeeId) {
 //		employeeRepository.deleteById(employeeId);
