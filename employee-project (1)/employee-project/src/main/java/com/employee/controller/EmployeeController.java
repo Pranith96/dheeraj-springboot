@@ -20,6 +20,8 @@ import com.employee.dto.EmployeeDto;
 import com.employee.entity.Employee;
 import com.employee.service.EmployeeService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -29,6 +31,9 @@ public class EmployeeController {
 	EmployeeService employeeService;
 
 	@PostMapping("/save")
+	@ApiOperation(value = "Employee account Creation API",
+    notes = "Please provide all the info for Employee account creation",
+    response = Employee.class)
 	public ResponseEntity<String> createEmployee(@RequestBody Employee employee) {
 		String response = employeeService.addEmployee(employee);
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -41,18 +46,27 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/get/{employeeId}")
+	@ApiOperation(value = "Employee Fetch Details Creation API",
+    notes = "Please provide employeeId for Employee details fetching",
+    response = Employee.class)
 	public ResponseEntity<EmployeeDto> getEmployeById(@PathVariable("employeeId") Integer employeeId){
 		EmployeeDto response = employeeService.getEmploye(employeeId);
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 	
 	@GetMapping("/get/id")
+	@ApiOperation(value = "Employee Fetch Details Creation API",
+    notes = "Please provide employeeId for Employee details fetching",
+    response = Employee.class)
 	public ResponseEntity<EmployeeDto> getEmployee(@RequestParam("employeeId") Integer employeeId){
 		EmployeeDto response = employeeService.getEmploye(employeeId);
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 	
 	@GetMapping("/get/name/{name}")
+	@ApiOperation(value = "Employee Fetch Details Creation API",
+    notes = "Please provide employee name for Employee details fetching",
+    response = Employee.class)
 	public ResponseEntity<List<Employee>> getEmployeByName(@PathVariable("name") String name){
 		List<Employee> response = employeeService.getEmployeByName(name);
 		return ResponseEntity.status(HttpStatus.OK).body(response);
