@@ -26,6 +26,7 @@ public class EmployeeServiceImpl2 implements EmployeeService {
 	@Override
 	public String addEmployee(Employee employee) {
 		employee.setStatus(Status.ACTIVE);
+		employee.getAddress().setEmployee(employee);
 		Employee response = employeeRepository.save(employee);
 		if (response == null) {
 			return "data not saved";

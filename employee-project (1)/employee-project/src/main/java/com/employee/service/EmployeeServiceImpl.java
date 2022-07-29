@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public String addEmployee(Employee employee) {
 		employee.setStatus(Status.ACTIVE);
+		employee.getAddress().setEmployee(employee);
 		Employee response = employeeRepository.save(employee);
 		if (response == null) {
 			return "data not saved";
