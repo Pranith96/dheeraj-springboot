@@ -1,8 +1,0 @@
-package com.employee.exceptions;
-
-public class EmployeeNotFoundException extends RuntimeException {
-
-	EmployeeNotFoundException(String message) {
-		super(message);
-	}
-}

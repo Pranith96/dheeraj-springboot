@@ -1,0 +1,62 @@
+package com.employee.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+@Entity
+@Table(name = "employee_table")
+@ApiModel(description = "Details About the Employee Accounts")
+//@Setter
+//@Getter
+@Data
+public class Employee implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "employee_id")
+	@ApiModelProperty(notes = "The Unique Employee Id")
+	private Integer employeeId;
+	@ApiModelProperty(notes = "The employee name as String")
+	@Column(name = "employee_name")
+	private String name;
+	@ApiModelProperty(notes = "The employee mobile number as String")
+	@Column(name = "mobile_Number")
+	private String mobileNumber;
+	@ApiModelProperty(notes = "The employee email as String")
+	@Column(name = "email_id")
+	private String emailId;
+	@ApiModelProperty(notes = "The employee login as String")
+	@Column(name = "login_id", unique = true) // ,length = 10,updatable = false)
+	private String loginId;
+	@Column(name = "password")
+	@ApiModelProperty(notes = "The employee password as String")
+	private String password;
+	@Column(name = "status")
+	@Enumerated(EnumType.STRING)
+	private Status status;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="address_id")
+	private Address address;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Company company;
+}
