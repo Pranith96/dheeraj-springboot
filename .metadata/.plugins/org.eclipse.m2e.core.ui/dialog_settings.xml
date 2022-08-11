@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\ramannpr\support_works\Gokulraj-prakash-springboot-microservices\ecommerce-zuul-apigateway"/>
 			<item value="C:\Users\ramannpr\support_works\Gokulraj-prakash-springboot-microservices\zipkin-server"/>
 			<item value="C:\Users\ramannpr\support_works\Gokulraj-prakash-springboot-microservices\ecommerce-cart-service"/>
 			<item value="C:\Users\ramannpr\spring_boot_applications\springbooth2databse"/>
